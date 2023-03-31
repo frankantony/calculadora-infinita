@@ -44,6 +44,35 @@ string soma (string a, string b) {
 	return resultado;
 }
 
+//calcula subtracao
+string subtracao (string a, string b) {
+	string resultado = "";
+	reverse(a.begin(), a.end());
+	reverse(b.begin(), b.end());
+	int tam_a = a.length(), tam_b = b.length();
+	for (int i = 0; i < tam_b; i++) {
+		if (a[i] < b[i]) {
+			a[i] = 10 + a[i];
+			int j = i + 1;
+			while (j < tam_a && a[j] == '0') {
+				a[j] = '9';
+				j++;
+			}
+			a[j] = a[j] - 1;
+		}
+
+		char diff = (a[i] - b[i]) + '0';
+		resultado += diff;
+	}
+
+	for (int i = tam_b; i < tam_a; i++) {
+		cout << a[i] << endl;
+		resultado += a[i];
+	}
+	reverse(resultado.begin(), resultado.end());
+	return resultado;
+}
+
 //calcula multiplicacao
 string multiplicacao (string a, string b) {
 	string zeros = "", resultado = "0", parcela = "";
